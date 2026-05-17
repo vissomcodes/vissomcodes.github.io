@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shashank Vissom | CFD & Aerospace Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0f14;
+    --bg2: #13151c;
+    --bg3: #1a1d27;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #e8eaf0;
+    --muted: #7a8096;
+    --accent: #4e9eff;
+    --accent2: #2dd4bf;
+    --accent3: #f97316;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(13,15,20,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 4rem; max-width: 1100px; margin: 0 auto; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+    position: relative;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.78rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block; width: 32px; height: 1px;
+    background: var(--accent);
+  }
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--accent2);
+  }
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--muted);
+    max-width: 540px;
+    margin-top: 1.5rem;
+    font-weight: 300;
+  }
+  .hero-tags {
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    margin-top: 2rem;
+  }
+  .tag {
+    font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border: 1px solid var(--border2);
+    border-radius: 999px;
+    color: var(--muted);
+  }
+  .tag.accent { border-color: var(--accent); color: var(--accent); }
+  .hero-cta {
+    display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    font-family: var(--sans); font-size: 0.85rem; font-weight: 500;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer; text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #0d0f14;
+    border: 1px solid var(--accent);
+  }
+  .btn-primary:hover { background: #72b4ff; border-color: #72b4ff; }
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border2);
+  }
+  .btn-outline:hover { border-color: var(--text); }
+
+  /* grid line background decoration */
+  .hero-grid {
+    position: absolute; inset: 0; z-index: -1;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 100%);
+  }
+
+  /* ── SECTION HEADINGS ── */
+  .section-label {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1rem;
+  }
+  .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 3rem;
+    line-height: 1.1;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .about-text p { color: var(--muted); font-size: 1rem; margin-bottom: 1rem; }
+  .about-text p strong { color: var(--text); font-weight: 500; }
+
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .stat { background: var(--bg2); padding: 1.5rem; }
+  .stat-num { font-family: var(--serif); font-size: 2.5rem; color: var(--accent); line-height: 1; }
+  .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* ── EXPERIENCE ── */
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: 0.5rem; bottom: 0;
+    width: 1px; background: var(--border2);
+  }
+  .timeline-item { position: relative; margin-bottom: 3rem; }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -2.4rem; top: 0.5rem;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--bg); border: 1px solid var(--accent);
+  }
+  .timeline-item.active::before { background: var(--accent); }
+  .timeline-date { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.3rem; }
+  .timeline-role { font-size: 1.1rem; font-weight: 500; color: var(--text); }
+  .timeline-org { font-size: 0.9rem; color: var(--accent2); margin-bottom: 0.75rem; }
+  .timeline-desc { color: var(--muted); font-size: 0.9rem; }
+  .timeline-desc li { margin-bottom: 0.35rem; list-style: none; padding-left: 1rem; position: relative; }
+  .timeline-desc li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.75rem; top: 0.15rem; }
+
+  /* ── PROJECTS ── */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .project-card { background: var(--bg2); padding: 1.75rem; transition: background 0.2s; }
+  .project-card:hover { background: var(--bg3); }
+  .project-num { font-family: var(--serif); font-size: 2.5rem; color: var(--border2); line-height: 1; margin-bottom: 1rem; }
+  .project-title { font-size: 1rem; font-weight: 500; color: var(--text); margin-bottom: 0.6rem; line-height: 1.3; }
+  .project-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+  .project-tag { font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 3px; background: rgba(78,158,255,0.1); color: var(--accent); }
+
+  /* ── SKILLS ── */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+  .skill-group { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; }
+  .skill-group-title { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+  .skill-list { display: flex; flex-direction: column; gap: 0.6rem; }
+  .skill-item { display: flex; align-items: center; justify-content: space-between; font-size: 0.875rem; }
+  .skill-name { color: var(--text); }
+  .skill-bar { width: 80px; height: 3px; background: var(--border2); border-radius: 2px; overflow: hidden; }
+  .skill-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 2px; }
+
+  /* ── EDUCATION ── */
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .edu-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.75rem; }
+  .edu-badge { display: inline-block; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 3px; background: rgba(45,212,191,0.1); color: var(--accent2); margin-bottom: 1rem; }
+  .edu-degree { font-size: 1.05rem; font-weight: 500; color: var(--text); margin-bottom: 0.3rem; line-height: 1.3; }
+  .edu-uni { font-size: 0.875rem; color: var(--muted); margin-bottom: 0.5rem; }
+  .edu-period { font-size: 0.78rem; color: var(--muted); opacity: 0.6; }
+  .edu-note { font-size: 0.83rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+
+  /* ── CONTACT ── */
+  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-text p { color: var(--muted); margin-bottom: 1rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2rem; }
+  .contact-link { display: flex; align-items: center; gap: 0.75rem; color: var(--text); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  .contact-link:hover { color: var(--accent); }
+  .contact-link-icon { width: 36px; height: 36px; border: 1px solid var(--border2); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-form input, .contact-form textarea {
+    background: var(--bg2); border: 1px solid var(--border2); color: var(--text);
+    padding: 0.85rem 1rem; border-radius: 6px; font-family: var(--sans); font-size: 0.9rem;
+    outline: none; transition: border-color 0.2s; resize: none;
+  }
+  .contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--muted); }
+  .contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.8rem; color: var(--muted);
+    max-width: 1100px; margin: 0 auto;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid, .contact-inner, .edu-grid { grid-template-columns: 1fr; gap: 2rem; }
+    footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow { animation: fadeUp 0.5s ease both; }
+  h1 { animation: fadeUp 0.5s 0.1s ease both; }
+  .hero-sub { animation: fadeUp 0.5s 0.2s ease both; }
+  .hero-tags { animation: fadeUp 0.5s 0.3s ease both; }
+  .hero-cta { animation: fadeUp 0.5s 0.4s ease both; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">S. Vissom</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <span class="hero-eyebrow">Aerospace Engineer & CFD Specialist</span>
+  <h1>Shashank<br><em>Vissom</em></h1>
+  <p class="hero-sub">Master's researcher in Computational Fluid Dynamics — simulating the physics of flight, heat, and flow across aircraft, rockets, and hypersonic regimes.</p>
+  <div class="hero-tags">
+    <span class="tag accent">OpenFOAM</span>
+    <span class="tag">HPC Simulations</span>
+    <span class="tag">Turbulence Modelling</span>
+    <span class="tag">Mesh Generation</span>
+    <span class="tag">RANS</span>
+    <span class="tag">Erasmus Mundus</span>
+  </div>
+  <div class="hero-cta">
+    <a href="#projects" class="btn btn-primary">View Projects ↓</a>
+    <a href="#contact" class="btn btn-outline">Get in Touch</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <span class="section-label">About</span>
+  <h2>CFD, Flow Physics<br>&amp; High-Performance Computing</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a <strong>CFD-focused aerospace engineering Master's student</strong> in the Erasmus Mundus TFMASA programme — studying across France, Belgium, and Germany with a deep focus on aerodynamic and thermal-fluid simulations.</p>
+      <p>My research centres on <strong>buoyancy-driven natural-convection flows</strong> with internal heat generation, using OpenFOAM on Linux/HPC systems. Before my Master's, I spent nearly two years as a <strong>Project Engineer</strong> at S&I Engineering Solutions in India, running RANS simulations for aircraft, rockets, UAVs, and industrial configurations.</p>
+      <p>I enjoy the intersection of <strong>numerical methods, physical intuition, and engineering problem-solving</strong> — and I'm always looking for new challenges in simulation-driven engineering.</p>
+      <p>Open to relocation across Europe and international engineering opportunities.</p>
+    </div>
+    <div>
+      <div class="about-stats">
+        <div class="stat">
+          <div class="stat-num">2+</div>
+          <div class="stat-label">Years industry CFD</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">10K</div>
+          <div class="stat-label">Core HPC cluster</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Countries studied in</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">4</div>
+          <div class="stat-label">CFD solvers mastered</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <span class="section-label">Experience</span>
+  <h2>Where I've Worked</h2>
+  <div class="timeline">
+
+    <div class="timeline-item active">
+      <div class="timeline-date">Oct 2025 – Present</div>
+      <div class="timeline-role">Research Assistant (HiWi) — CFD & Thermal-Fluid Simulations</div>
+      <div class="timeline-org">Chair of Aerodynamics and Fluid Mechanics, BTU Cottbus, Germany</div>
+      <ul class="timeline-desc">
+        <li>CFD simulations in OpenFOAM for buoyancy-driven natural-convection flows with internal heat generation.</li>
+        <li>Complete simulation workflows: mesh generation, solver setup, validation, post-processing.</li>
+        <li>Parallel CFD on Linux/HPC using decomposition and runtime optimisation strategies.</li>
+        <li>Technical reporting and presenting simulation results in collaborative research discussions.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">Sep 2022 – May 2024</div>
+      <div class="timeline-role">Project Engineer — CFD Simulations & Application Support</div>
+      <div class="timeline-org">S & I Engineering Solutions Pvt. Ltd., India</div>
+      <ul class="timeline-desc">
+        <li>RANS-based CFD simulations for aircraft, rockets, UAVs, helicopters using OpenFOAM and HiFUN.</li>
+        <li>Structured &amp; unstructured mesh generation with ICEM-CFD and Hypermesh for compressible-flow applications.</li>
+        <li>Developed <em>HiFUN-DTDT</em> — a Python/OpenFOAM automation tool for structured mesh generation and workflow setup.</li>
+        <li>Large-scale simulations on a 10,000-core HPC cluster using domain decomposition and runtime optimisation.</li>
+        <li>Grid-independence studies, turbulence-model comparisons, and benchmark validation.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">Oct 2020 – Apr 2022</div>
+      <div class="timeline-role">Aerodynamics Engineer — Intern</div>
+      <div class="timeline-org">Indian Amateur Rocket Association (IARA), India</div>
+      <ul class="timeline-desc">
+        <li>Designed and optimised rocket nosecone aerodynamics using CFD and analytical methods.</li>
+        <li>External aerodynamic simulations across multiple Mach regimes using RANS equations.</li>
+        <li>Validated aerodynamic behaviour: drag, lift, and stability derivatives.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">Sep 2021 – Dec 2021</div>
+      <div class="timeline-role">Project Trainee</div>
+      <div class="timeline-org">Aeromech Technologies Pvt. Ltd., India</div>
+      <ul class="timeline-desc">
+        <li>Created mechanical CAD drawings and manufacturing documentation for CNC gear-hobbing machines.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <span class="section-label">Research & Projects</span>
+  <h2>Selected Work</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-num">01</div>
+      <div class="project-title">Numerical Validation of Lid-Driven & Natural Convection Flows</div>
+      <div class="project-desc">CFD validation studies for lid-driven cavity and natural-convection benchmark cases in OpenFOAM. Mesh-independence studies and benchmark comparison with Botella–Peyret and De Vahl Davis reference data.</div>
+      <div class="project-tags">
+        <span class="project-tag">OpenFOAM</span>
+        <span class="project-tag">Validation</span>
+        <span class="project-tag">Thermal Flow</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">02</div>
+      <div class="project-title">Unstart Phenomenon of a Scramjet Inlet in Hypersonic Regime</div>
+      <div class="project-desc">Simulated mixed-compression scramjet inlet under high-Mach conditions using RANS + SA/k–ω turbulence models. Anisotropic grid optimisation to capture shock oscillations and transient unstart behaviour.</div>
+      <div class="project-tags">
+        <span class="project-tag">Hypersonic</span>
+        <span class="project-tag">Scramjet</span>
+        <span class="project-tag">RANS</span>
+        <span class="project-tag">Shock Dynamics</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">03</div>
+      <div class="project-title">Boundary Layer Bleed Effects on Hypersonic Intake Performance</div>
+      <div class="project-desc">CFD parametric study of bleed-hole configurations on shock structure and intake efficiency. Identified optimum bleed placement through sensitivity studies, mesh-independence validation, and backflow analysis.</div>
+      <div class="project-tags">
+        <span class="project-tag">Intake Aero</span>
+        <span class="project-tag">Parametric Study</span>
+        <span class="project-tag">OpenFOAM</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">04</div>
+      <div class="project-title">HiFUN-DTDT Automation Tool</div>
+      <div class="project-desc">Developed a Python/OpenFOAM-based tool for automated structured mesh generation and solver workflow setup at S&I Engineering, significantly reducing manual setup time for complex CFD configurations.</div>
+      <div class="project-tags">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">Automation</span>
+        <span class="project-tag">HiFUN</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">05</div>
+      <div class="project-title">Rocket Nosecone Aerodynamics (IARA)</div>
+      <div class="project-desc">Designed and optimised rocket nosecone geometry using CFD simulations across subsonic, transonic, and supersonic Mach regimes. Validated drag, lift, and stability derivatives against analytical methods.</div>
+      <div class="project-tags">
+        <span class="project-tag">Rocket Aero</span>
+        <span class="project-tag">Multi-Mach</span>
+        <span class="project-tag">Stability</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">06</div>
+      <div class="project-title">Large-Scale Industrial CFD on 10K-Core HPC</div>
+      <div class="project-desc">Executed large-scale RANS simulations for industrial aerospace configurations on a 10,000-core HPC cluster. Optimised domain decomposition strategies and queue management for runtime efficiency.</div>
+      <div class="project-tags">
+        <span class="project-tag">HPC</span>
+        <span class="project-tag">Parallel CFD</span>
+        <span class="project-tag">Linux</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <span class="section-label">Tools & Skills</span>
+  <h2>Technical Stack</h2>
+  <div class="skills-grid">
+
+    <div class="skill-group">
+      <div class="skill-group-title">CFD Solvers</div>
+      <div class="skill-list">
+        <div class="skill-item"><span class="skill-name">OpenFOAM</span><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">HiFUN</span><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">SU2</span><div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div></div>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Meshing & Post-Processing</div>
+      <div class="skill-list">
+        <div class="skill-item"><span class="skill-name">ICEM-CFD</span><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Hypermesh</span><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">ParaView</span><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Fluent Meshing</span><div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div></div>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Programming & Automation</div>
+      <div class="skill-list">
+        <div class="skill-item"><span class="skill-name">Python</span><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Linux Shell</span><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">C++</span><div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div></div>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Physics & Methods</div>
+      <div class="skill-list">
+        <div class="skill-item"><span class="skill-name">RANS / Turbulence Models</span><div class="skill-bar"><div class="skill-fill" style="width:93%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Compressible Flows</span><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Thermal-Fluid Systems</span><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Grid-Independence Studies</span><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <span class="section-label">Education</span>
+  <h2>Academic Background</h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <span class="edu-badge">Erasmus Mundus</span>
+      <div class="edu-degree">Master's — Transfers, Fluids & Materials in Aeronautical and Space Applications (TFMASA)</div>
+      <div class="edu-uni">UCLouvain (Belgium) · BTU Cottbus–Senftenberg (Germany) · Université de Bordeaux (France)</div>
+      <div class="edu-period">Sep 2024 – Present</div>
+      <div class="edu-note">Focus: CFD, turbulence modelling, compressible flows, thermal-fluid systems, and aerospace simulations. Currently completing Master's thesis research.</div>
+    </div>
+    <div class="edu-card">
+      <span class="edu-badge">Bachelor's</span>
+      <div class="edu-degree">Bachelor's — Aerospace Engineering</div>
+      <div class="edu-uni">Ramaiah University of Applied Sciences, Bangalore, India</div>
+      <div class="edu-period">May 2017 – Aug 2021</div>
+      <div class="edu-note">GPA: 7.82 / 10</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <span class="section-label">Contact</span>
+  <h2>Let's Connect</h2>
+  <div class="contact-inner">
+    <div class="contact-text">
+      <p>I'm currently completing my Master's thesis and open to discussions about CFD engineering roles, research collaborations, or internship opportunities across Europe.</p>
+      <p>Feel free to reach out via email or LinkedIn.</p>
+      <div class="contact-links">
+        <a href="mailto:shashankvissom1@gmail.com" class="contact-link">
+          <span class="contact-link-icon">✉</span>
+          shashankvissom1@gmail.com
+        </a>
+        <a href="tel:+4916233013990" class="contact-link">
+          <span class="contact-link-icon">📞</span>
+          +49 162 330 1399
+        </a>
+        <a href="#" class="contact-link">
+          <span class="contact-link-icon">📍</span>
+          Cottbus, Germany
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="contact-form">
+        <input type="text" placeholder="Your name" />
+        <input type="email" placeholder="Your email" />
+        <textarea rows="5" placeholder="Your message…"></textarea>
+        <a href="mailto:shashankvissom1@gmail.com" class="btn btn-primary" style="text-align:center; justify-content:center;">Send Message →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Shashank Vissom</span>
+  <span>CFD · Aerospace · HPC</span>
+</footer>
+
+</body>
+</html>
